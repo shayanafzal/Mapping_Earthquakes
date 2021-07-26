@@ -41,9 +41,6 @@ let allEarthquakes = new L.LayerGroup();
 let tectonicPlates = new L.LayerGroup();
 let majorEQ = new L.LayerGroup();
 
-
-
-
 // 2. Add a reference to the tectonic plates group to the overlays object.
 let overlays = {
   "Earthquakes": allEarthquakes,
@@ -121,24 +118,6 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
   // Then we add the earthquake layer to our map.
   allEarthquakes.addTo(map);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // Deliverable 2 Additions
-
   // 3. Retrieve the major earthquake GeoJSON data >4.5 mag for the week.
   d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson").then(function(data) {
 
@@ -154,7 +133,6 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
       weight: 0.5
     };
   }
-
 
   // 5. Change the color function to use three colors for the major earthquakes based on the magnitude of the earthquake.
   function getColor(magnitude) {
@@ -175,14 +153,6 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     return magnitude * 4;
   }
 
-
-
-
-
-
-
-
-
   // 7. Creating a GeoJSON layer with the retrieved data that adds a circle to the map 
   
   L.geoJson(data, {
@@ -201,37 +171,11 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
         
   }).addTo(majorEQ);
 
-
-
-
-
-
-
-
-
-
-
   // 8. Add the major earthquakes layer to the map.
   majorEQ.addTo(map);
 
   // 9. Close the braces and parentheses for the major earthquake data.
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   // Here we create a legend control object.
 let legend = L.control({
@@ -265,7 +209,6 @@ legend.onAdd = function() {
   // Finally, we our legend to the map.
   legend.addTo(map);
 
-
   // 3. Use d3.json to make a call to get our Tectonic Plate geoJSON data.
   d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json").then(function(data) {
     L.geoJson(data, {
@@ -275,7 +218,6 @@ legend.onAdd = function() {
     }).addTo(tectonicPlates);
 
     tectonicPlates.addTo(map);
-
 
   });
 });
